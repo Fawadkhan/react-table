@@ -17,8 +17,9 @@
 
 .table th {
   text-align: left;
-
+  vertical-align: center;
   padding: 5px;
+  width: 100%;
 }
 
 .table td {
@@ -35,4 +36,9 @@
 
 .cell-type-money {
   text-align: right;
+}
+
+.sort-icon {
+  margin-left: 5px;
+  vertical-align: bottom;
 }
