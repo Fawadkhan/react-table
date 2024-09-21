@@ -1,27 +1,22 @@
+import React from 'react';
+import { Table } from './components';
+import  tableData  from './data.json';
+import { columnTypes } from './types/table';
 import classNames from "./App.module.css";
-import { Table } from "./components";
-import tableData from "./data";
 
-const types = {
-  number: "number",
-  title: "text",
-  releaseDate: "date",
-  productionBudget: "money",
-  worldwideBoxOffice: "money",
-};
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className={classNames.app}>
       <Table
         columns={tableData.columns}
         rows={tableData.rows}
-        types={types}
+        types={columnTypes}
         initialSortColumn="number"
         initialSortDirection="ascending"
       />
     </div>
   );
-}
+};
 
 export default App;
