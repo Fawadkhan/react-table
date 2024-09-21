@@ -1,16 +1,9 @@
 import React from 'react';
 import { Table } from './components';
 import  tableData  from './data.json';
-import { CellType } from './types/table';
+import { columnTypes } from './types/table';
 import classNames from "./App.module.css";
 
-const types: Record<string, CellType> = {
-  number: "number",
-  title: "text",
-  releaseDate: "date",
-  productionBudget: "money",
-  worldwideBoxOffice: "money",
-};
 
 const App: React.FC = () => {
   return (
@@ -18,7 +11,7 @@ const App: React.FC = () => {
       <Table
         columns={tableData.columns}
         rows={tableData.rows}
-        types={types}
+        types={columnTypes}
         initialSortColumn="number"
         initialSortDirection="ascending"
       />
