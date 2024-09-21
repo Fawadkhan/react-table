@@ -4,7 +4,7 @@ export interface Column {
 }
 
 export interface Row {
-  [key: string]: string | number;
+  [key: string]: string | number | undefined;
 }
 
 export type CellType = 'number' | 'text' | 'date' | 'money';
