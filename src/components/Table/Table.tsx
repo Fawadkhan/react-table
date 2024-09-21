@@ -1,6 +1,8 @@
 import classNames from "./Table.module.css";
+import { TableProps } from '../../types/table';
 
-const Table = ({ columns, rows, types }) => {
+
+const Table: React.FC<TableProps>  = ({ columns, rows, types, initialSortColumn, initialSortDirection }) => {
   return (
     <table title="Movies" className={classNames.table}>
       <thead>

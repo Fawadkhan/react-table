@@ -1,8 +1,10 @@
+import React from 'react';
+import { Table } from './components';
+import  tableData  from './data.json';
+import { CellType } from './types/table';
 import classNames from "./App.module.css";
-import { Table } from "./components";
-import tableData from "./data";
 
-const types = {
+const types: Record<string, CellType> = {
   number: "number",
   title: "text",
   releaseDate: "date",
@@ -10,7 +12,7 @@ const types = {
   worldwideBoxOffice: "money",
 };
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className={classNames.app}>
       <Table
@@ -22,6 +24,6 @@ function App() {
       />
     </div>
   );
-}
+};
 
 export default App;
