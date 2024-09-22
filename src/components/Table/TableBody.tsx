@@ -9,11 +9,11 @@ export const TableBody: React.FC<{
   }> = ({ columns, rows, types }) => (
     <tbody>
       {rows.map((row, index) => (
-        <tr key={index}>
+        <tr key={index} data-testid={`row-${index}`} role="row">
           {columns.map(({ id }) => (
 
             <td
-              data-testid={`row-${index}-${id}`}
+              data-testid={`cell-${index}-${id}`} 
               className={classNames[`cell-type-${types[id]}`]}
               key={id}
             >

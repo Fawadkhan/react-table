@@ -15,32 +15,21 @@ export const mockTypes: Record<string, TableCellType> = {
 
 export const mockRows = [
     {
-      "number": 13,
-      "releaseDate": "06-05-2016",
-      "title": "Captain America: Civil War",
-      "productionBudget": 250000000,
-      "worldwideBoxOffice": 1153304495
+      "numberColumn": 13,
+      "dateColumn": "06-05-2016",
+      "textColumn": "Captain America: Civil War",
+      "moneyColumn": 250000000,
     },
     {
-      "number": 3,
-      "releaseDate": "07-05-2010",
-      "title": "Iron Man 2",
-      "productionBudget": 170000000,
-      "worldwideBoxOffice": 621156389
+      "numberColumn": 3,
+      "dateColumn": "07-05-2010",
+      "textColumn": "Iron Man 2",
+      "moneyColumn": 170000000,
     },
     {
-      "number": 4,
-      "releaseDate": "06-05-2011",
-      "title": "Thor",
-      "productionBudget": 150000000,
-      "worldwideBoxOffice": 449326618
-    },
-  
-    {
-      "number": 6,
-      "releaseDate": "04-05-2012",
-      "title": "The Avengers",
-      "productionBudget": 225000000,
-      "worldwideBoxOffice": 1519479547
+      "numberColumn": 4,
+      "dateColumn": "06-05-2011",
+      "textColumn": "Thor",
+      "moneyColumn": 150000000,
     },
   ]
