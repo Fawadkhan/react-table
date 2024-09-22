@@ -1,6 +1,6 @@
 import { Row, SortDirection, TableCellType } from "../types";
 
-// utlity method to parse date for sorting. 
+// utlity method to parse date for sorting to take care of edge cases
 const parseDateForSorting = (dateString: string): number => {
   if (!dateString || dateString.toLowerCase() === 'unknown') {
     return Number.MAX_SAFE_INTEGER;
@@ -49,6 +49,5 @@ const sortByType = (a: any, b: any, columnType: TableCellType, sortDirection: So
 export const sortRows = (rows: Row[], sortColumn: string, sortDirection: SortDirection, columnTypes: Record<string, TableCellType>) =>
   [...rows].sort((a, b) => {
     const columnType = columnTypes[sortColumn];
-    console.log("columnType", columnType, a[sortColumn], b[sortColumn]);
     return sortByType(a[sortColumn], b[sortColumn], columnType, sortDirection);
   });
