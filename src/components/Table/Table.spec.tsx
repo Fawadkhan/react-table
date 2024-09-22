@@ -20,12 +20,10 @@ describe("Table", () => {
 
         const headerTitle = screen.getByText(title);
         fireEvent.click(headerTitle);
-        // casting is not ideal here but for now it should be good. We are expecing it to be not null
-        // else we fail the test. This is to avoid an IF-ELSE check.
-        const headerCell = headerTitle.closest('th') as HTMLTableCellElement; 
-        expect(headerCell).not.toBeNull();
+        const headerCellKey = screen.getByTestId(id)
+        expect(headerCellKey).not.toBeNull();
 
-        const sortIcon = within(headerCell).getByTestId('ascending-icon');
+        const sortIcon = within(headerCellKey).getByTestId('ascending-icon');
         expect(sortIcon).toBeInTheDocument();
 
       });
@@ -42,19 +40,18 @@ describe("Table", () => {
         );
 
         const headerTitle = screen.getByText(title);
-        // casting is not ideal here but for now it should be good. We are expecing it to be not be null
-        // else we fail the test. This is to avoid an IF-ELSE check.
-        const headerCell = headerTitle.closest('th') as HTMLTableCellElement; 
-        expect(headerCell).not.toBeNull();
+
+        const headerCellKey = screen.getByTestId(id)
+        expect(headerCellKey).not.toBeNull();
         
 
           fireEvent.click(headerTitle);
-          let sortIcon = within(headerCell).getByTestId('ascending-icon');
+          let sortIcon = within(headerCellKey).getByTestId('ascending-icon');
           expect(sortIcon).toHaveClass('sort-icon');
           expect(sortIcon).toHaveAttribute('data-testid', 'ascending-icon');
 
           fireEvent.click(headerTitle);
-          sortIcon = within(headerCell).getByTestId('descending-icon');
+          sortIcon = within(headerCellKey).getByTestId('descending-icon');
           expect(sortIcon).toHaveClass('sort-icon');
           expect(sortIcon).toHaveAttribute('data-testid', 'descending-icon');
 

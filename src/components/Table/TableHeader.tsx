@@ -17,7 +17,7 @@ export const TableHeader: React.FC<{
  }) => (
     <tr>
       {columns.map(({ id, title }) => (
-        <th key={id} onClick={() => onSortChange(id)}>
+        <th data-testid={id} key={id} onClick={() => onSortChange(id)}>
           {title}
           { sortColumn === id && (
           <>
