@@ -1,4 +1,4 @@
-import { TableCellType } from "../../../types";
+import { TableCellType } from "../../types";
 
 const numberColumn = { id: "numberColumn", title: "Number column" };
 const textColumn = { id: "textColumn", title: "Text column" };

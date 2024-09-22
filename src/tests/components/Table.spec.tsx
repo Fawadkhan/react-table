@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
-import Table from './Table'; 
-import { mockColumns, mockRows, mockTypes } from "./__mocks__/tableData";
+import Table from '../../components/Table/Table'; 
+import { mockColumns, mockRows, mockTypes } from "../__mocks__/tableData";
 
 describe("Table", () => {
   const columnTable = mockColumns.map(({ id, title }) => [id, title]);
