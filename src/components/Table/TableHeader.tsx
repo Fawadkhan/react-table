@@ -22,9 +22,9 @@ export const TableHeader: React.FC<{
           { sortColumn === id && (
           <>
             {sortDirection === 'ascending' ? (
-              <AscIcon className={classNames[`sort-icon`]} />
+              <AscIcon className={classNames[`sort-icon`]} data-testid="ascending-icon"/>
             ) : (
-              <DscIcon className={classNames[`sort-icon`]} />
+              <DscIcon className={classNames[`sort-icon`]} data-testid="descending-icon" />
             )}
           </>
         )}
