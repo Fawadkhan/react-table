@@ -6,7 +6,14 @@ import { TableHeader } from './TableHeader';
 import { TableFilterRow } from './TableFilterRow';
 import { TableBody } from './TableBody';
 
-
+const TableTitle: React.FC = () => (
+  <>
+    <h3>Sortable and Filterable Table</h3>
+    <p style={{ fontSize: "0.9em", color: "#6c757d" }}>
+      Click on the column titles to sort the table.
+    </p>
+  </>
+);
 
 
 const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, initialSortDirection }) => {
@@ -35,10 +42,7 @@ const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, 
 
   return (
     <>
-    <h3>Sortable and Filterable Table</h3>
-    <p style={{ fontSize: '0.9em', color: '#6c757d' }}>
-      Click on the column titles to sort the table.
-    </p>
+    <TableTitle />
     <table title="Movies" className={classNames.table}>
       <thead>
         <TableHeader 
