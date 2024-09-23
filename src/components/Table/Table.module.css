@@ -61,3 +61,8 @@
 .table tbody tr:nth-child(even) {
   background-color: var(--color-even-row);
 }
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-secondary);
+}
