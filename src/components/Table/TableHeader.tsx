@@ -1,9 +1,9 @@
 import React from "react";
-import { Column, SORT_DIRECTION, SortDirection } from "../../types";
+import { Column, SORT_DIRECTION, SortDirection } from "types";
 import classNames from "./Table.module.css";
 
-import { ReactComponent as AscIcon } from '../../assets/order-ascending.svg';
-import { ReactComponent as DscIcon } from '../../assets/order-descending.svg';
+import { ReactComponent as AscIcon } from 'assets/order-ascending.svg';
+import { ReactComponent as DscIcon } from 'assets/order-descending.svg';
 
 export const TableHeader: React.FC<{ 
   columns: Column[],

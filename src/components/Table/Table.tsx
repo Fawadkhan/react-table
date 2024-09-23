@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
-import classNames from "./Table.module.css";
-import { SORT_DIRECTION, SortDirection, TableProps } from '../../types';
-import { filterRows, sortRows } from '../../utils';
+import classNames from "components/Table/Table.module.css";
+import { SORT_DIRECTION, SortDirection, TableProps } from 'types';
+import { filterRows, sortRows } from 'utils';
 import { TableHeader } from './TableHeader';
 import { TableFilterRow } from './TableFilterRow';
 import { TableBody } from './TableBody';

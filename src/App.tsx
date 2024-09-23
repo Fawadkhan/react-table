@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from './components';
-import  tableData  from './data.json';
+import  tableData  from 'data/data.json';
 import { columnTypes } from './types/table';
 import classNames from "./App.module.css";
 

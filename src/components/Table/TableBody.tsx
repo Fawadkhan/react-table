@@ -1,5 +1,5 @@
 import React from "react";
-import { Column, Row, TableCellType } from "../../types";
+import { Column, Row, TableCellType } from "types";
 import classNames from "./Table.module.css";
 
 export const TableBody: React.FC<{
