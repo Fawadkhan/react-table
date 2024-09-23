@@ -50,7 +50,5 @@ export const sortRows = (rows: Row[], sortConfig: SortConfig) =>
   [...rows].sort((a, b) => {
     const { sortColumn, sortDirection, columnTypes } = sortConfig;
     const columnType = columnTypes[sortColumn];
-
-    console.log('sortColumn', columnTypes);
     return sortByType(a[sortColumn], b[sortColumn], columnType, sortDirection);
   });
