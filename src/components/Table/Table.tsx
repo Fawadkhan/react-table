@@ -34,6 +34,11 @@ const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, 
   }), [filteredRows, sortColumn, sortDirection, types]);
 
   return (
+    <>
+    <h3>Sortable and Filterable Table</h3>
+    <p style={{ fontSize: '0.9em', color: '#6c757d' }}>
+      Click on the column titles to sort the table.
+    </p>
     <table title="Movies" className={classNames.table}>
       <thead>
         <TableHeader 
@@ -54,6 +59,7 @@ const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, 
         types={types}
       />
     </table>
+    </>
   );
 };
 
