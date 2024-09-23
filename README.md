@@ -133,5 +133,10 @@ To address this, I implemented a **switch-case** structure to handle different c
 
 - I just added very basic styles to the table as this was not the focus of the challenge. 
 
-### Unit tests
-Very basic unit tests are added to test the sorting and filtering functionality as mentioned
+### Error boundry 
+- I added a simple error boundary to catch any errors that might occur in the application.
+- Ideally I could maybe write my own error boundary component that would display a more user friendly error message but to keep it simple I just used a library for it. 
+
+### Dompurify for XSS attacks
+- I used dompurify to sanitize the input text before rendering it to the table to prevent XSS attacks.
+- To keep it simple im just using dompurify to sanizte the input using very basic sanitization. Dompurify allows for more advanced sanitization techniques.
