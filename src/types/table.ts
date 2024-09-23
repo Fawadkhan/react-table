@@ -7,6 +7,16 @@ export interface Row {
   [key: string]: string | number | undefined;
 }
 
+export type SortConfig = {
+  sortColumn: string;
+  sortDirection: SortDirection;
+  columnTypes: Record<string, TableCellType>;
+}
+
+export enum SORT_DIRECTION {
+  Ascending = 'ascending',
+  Descending = 'descending',
+}
 export type TableCellType = 'number' | 'text' | 'date' | 'money';
 
 export interface TableProps {

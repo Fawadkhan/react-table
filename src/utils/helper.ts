@@ -1,4 +1,4 @@
-import { Row, SortDirection, TableCellType } from "../types";
+import { Row, SortConfig, SortDirection, TableCellType } from "../types";
 
 // utlity method to parse date for sorting to take care of edge cases
 const parseDateForSorting = (dateString: string): number => {
@@ -20,6 +20,7 @@ const parseDateForSorting = (dateString: string): number => {
   return Number.MAX_SAFE_INTEGER;
 };
 
+const isAscending = (sortDirection: SortDirection): boolean => sortDirection === 'ascending';
 
 export const filterRows = (rows: Row[], filters: Record<string, string>) =>
   rows.filter(row =>
@@ -32,22 +33,24 @@ export const filterRows = (rows: Row[], filters: Record<string, string>) =>
 
 const sortByType = (a: any, b: any, columnType: TableCellType, sortDirection: SortDirection): number => {
   if (columnType === 'number' || columnType === 'money') {
-    return sortDirection === 'ascending' ? Number(a) - Number(b) : Number(b) - Number(a);
+    return isAscending(sortDirection) ? Number(a) - Number(b) : Number(b) - Number(a);
   }
 
   if (columnType === 'date') {
     const dateA = parseDateForSorting(a);
     const dateB = parseDateForSorting(b);
-    return sortDirection === 'ascending' ? dateA - dateB : dateB - dateA;
+    return isAscending(sortDirection) ? dateA - dateB : dateB - dateA;
   }
 
-  return sortDirection === 'ascending' 
+  return isAscending(sortDirection)
     ? String(a).localeCompare(String(b)) 
     : String(b).localeCompare(String(a));
 };
 
-export const sortRows = (rows: Row[], sortColumn: string, sortDirection: SortDirection, columnTypes: Record<string, TableCellType>) =>
+
+export const sortRows = (rows: Row[], sortConfig: SortConfig) =>
   [...rows].sort((a, b) => {
+    const { sortColumn, sortDirection, columnTypes } = sortConfig;
     const columnType = columnTypes[sortColumn];
     return sortByType(a[sortColumn], b[sortColumn], columnType, sortDirection);
   });

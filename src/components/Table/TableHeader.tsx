@@ -1,5 +1,5 @@
 import React from "react";
-import { Column, SortDirection } from "../../types";
+import { Column, SORT_DIRECTION, SortDirection } from "../../types";
 import classNames from "./Table.module.css";
 
 import { ReactComponent as AscIcon } from '../../assets/order-ascending.svg';
@@ -21,7 +21,7 @@ export const TableHeader: React.FC<{
           {title}
           { sortColumn === id && (
           <>
-            {sortDirection === 'ascending' ? (
+            {sortDirection ===  SORT_DIRECTION.Ascending ? (
               <AscIcon className={classNames[`sort-icon`]} data-testid="ascending-icon"/>
             ) : (
               <DscIcon className={classNames[`sort-icon`]} data-testid="descending-icon" />

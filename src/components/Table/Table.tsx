@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import classNames from "./Table.module.css";
-import { SortDirection, TableProps } from '../../types';
+import { SORT_DIRECTION, SortDirection, TableProps } from '../../types';
 import { filterRows, sortRows } from '../../utils';
 import { TableHeader } from './TableHeader';
 import { TableFilterRow } from './TableFilterRow';
@@ -11,7 +11,7 @@ import { TableBody } from './TableBody';
 
 const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, initialSortDirection }) => {
   const [filters, setFilters] = useState<Record<string, string>>({});
-  const [sortColumn, setSortColumn] = useState<string>(initialSortColumn);
+  const [sortColumn, setSortColumn] = useState<string>(''); // default sort
   const [sortDirection, setSortDirection] = useState<SortDirection>(initialSortDirection);
 
   const handleFilterChange = (columnId: string, value: string) => {
@@ -20,18 +20,18 @@ const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, 
 
   const handleSortChange = (columnId: string) => {
     if (columnId === sortColumn) {
-      setSortDirection(prev => (prev === 'ascending' ? 'descending' : 'ascending'));
+      setSortDirection(prev => (prev === SORT_DIRECTION.Ascending ?  SORT_DIRECTION.Descending :  SORT_DIRECTION.Ascending));
     } else {
       setSortColumn(columnId);
-      setSortDirection('ascending');
+      setSortDirection(SORT_DIRECTION.Ascending);
     }
   }
 
-  const filteredAndSortedRows = useMemo(() => {
-     const filteredRows = filterRows(rows, filters);
-    return sortRows(filteredRows, sortColumn, sortDirection, types);
-  }, [rows, filters, sortColumn, sortDirection, types]);
+  const filteredRows = useMemo(() => filterRows(rows, filters), [rows, filters]);
 
+  const sortedRows = useMemo(() => sortRows(filteredRows, {
+    sortColumn, sortDirection, columnTypes: types
+  }), [filteredRows, sortColumn, sortDirection, types]);
 
   return (
     <table title="Movies" className={classNames.table}>
@@ -50,7 +50,7 @@ const Table: React.FC<TableProps> = ({ columns, rows, types, initialSortColumn, 
       </thead>
       <TableBody
         columns={columns}
-        rows={filteredAndSortedRows}
+        rows={sortedRows}
         types={types}
       />
     </table>

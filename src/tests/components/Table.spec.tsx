@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import Table from "../../components/Table/Table";
 import { mockColumns, mockRows, mockTypes } from "../__mocks__/tableData";
+import { SORT_DIRECTION } from "../../types";
 
 describe("Table", () => {
   const columnTable = mockColumns.map(({ id, title }) => [id, title]);
@@ -14,7 +15,7 @@ describe("Table", () => {
             rows={mockRows}
             types={mockTypes}
             initialSortColumn=""
-            initialSortDirection="ascending"
+            initialSortDirection={SORT_DIRECTION.Ascending}
           />
         );
 
@@ -34,7 +35,7 @@ describe("Table", () => {
             rows={mockRows}
             types={mockTypes}
             initialSortColumn=""
-            initialSortDirection="ascending"
+            initialSortDirection={SORT_DIRECTION.Ascending}
           />
         );
 
@@ -67,7 +68,7 @@ describe("Table", () => {
               rows={mockRows}
               types={mockTypes}
               initialSortColumn=""
-              initialSortDirection="ascending"
+              initialSortDirection={SORT_DIRECTION.Ascending}
             />
           );
 
@@ -93,7 +94,7 @@ describe("Table", () => {
           rows={mockRows}
           types={mockTypes}
           initialSortColumn=""
-          initialSortDirection="ascending"
+          initialSortDirection={SORT_DIRECTION.Ascending}
         />
       );
       const filterInput1 = screen.getByPlaceholderText(
