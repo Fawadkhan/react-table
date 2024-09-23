@@ -89,3 +89,48 @@ On a real world scenario, you could potentially argue with a backend developer t
 ## 📝 Design decisions and feedback
 
 _Here you can leave any comments about your design decisions, further instructions and comments as well as feedback._
+
+### Node Version
+
+- **Note**: Use `.nvmrc` to set the node version to Node 18.
+
+  ```sh
+  nvm use
+    ```
+
+### TypeScript
+
+I decided to update the project to use **TypeScript** to keep the project type safe
+
+### Component Structure
+
+I introduced three new components to manage different parts of the table:
+
+- **`TableHeader`**: Handles sorting of the table columns.
+- **`TableFilterRow`**: Manages filtering functionality for each column.
+- **`TableBody`**: Responsible for rendering the table's body (rows).
+
+All these components are located in the `/Table` folder. Although separating components into individual folders is a good practice, I chose to keep them together as they are **tightly coupled** and don't require dedicated style folders. They share functionality and are closely related, making this structure more convenient for now.
+
+### Filtering and Sorting Strategy
+
+- I implemented **filtering first** and then **sorting**. This allows sorting to only affect the filtered data, which is a common use case.
+- The sorting logic is managed in the `TableHeader` component. By default, the data is sorted in **ascending order** on the initial load.
+- No specific column is pre-set for sorting. However, any column header can be clicked to sort the data. However this can be changed by adding a default sorted column in the `Table` component.
+
+
+### Sorting Logic Optimization
+
+Initially, I used a basic sorting strategy (`a-b` for ascending and `b-a` for descending) with the JavaScript `sort()` method. However, I encountered issues with sorting mixed data types (strings and numbers) for dates.
+To address this, I implemented a **switch-case** structure to handle different cases, such as numbers, strings, and dates, ensuring accurate sorting for each data type.
+
+### Handling Edge Cases for Sorting
+
+- **Unknown Dates**: Dates labeled as `"Unknown"` are treated as the largest possible number to keep them on extreme ends in both asc and desc order
+- **Year-Only Dates**: For dates that only contain a year, I append the date `12-31` (end of the year) to maintain consistency in formatting. This allows for easier sorting of partial dates.
+- **Strings**: Also its not ideal to subtract string from a string "abc" - "bcd" and for this purpose I used localeCompare method to compare strings.
+
+- I just added very basic styles to the table as this was not the focus of the challenge. 
+
+### Unit tests
+Very basic unit tests are added to test the sorting and filtering functionality as mentioned
