@@ -128,7 +128,8 @@ To address this, I implemented a **switch-case** structure to handle different c
 
 - **Unknown Dates**: Dates labeled as `"Unknown"` are treated as the largest possible number to keep them on extreme ends in both asc and desc order
 - **Year-Only Dates**: For dates that only contain a year, I append the date `12-31` (end of the year) to maintain consistency in formatting. This allows for easier sorting of partial dates.
-- **Strings**: Also its not ideal to subtract string from a string "abc" - "bcd" and for this purpose I used localeCompare method to compare strings. Some of them I found online through a quick search
+- **Strings**: Also its not ideal to subtract string from a string "abc" - "bcd" and for this purpose I used localeCompare method to compare strings.
+- Some of these techniques I found online through a quick search
 
 - I just added very basic styles to the table as this was not the focus of the challenge. 
 
