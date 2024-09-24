@@ -106,9 +106,12 @@ I decided to update the project to use **TypeScript** to keep the project type s
 
 I introduced three new components to manage different parts of the table:
 
+- **`Table`**: The main component that combines all the above components to render the table.
 - **`TableHeader`**: Handles sorting of the table columns.
 - **`TableFilterRow`**: Manages filtering functionality for each column.
 - **`TableBody`**: Responsible for rendering the table's body (rows).
+- **`TableTitle`**: Renders the title of the table with caption. (This could be a generic common component but for simplicity I coupled this to the table)
+
 
 All these components are located in the `/Table` folder. Although separating components into individual folders is a good practice, I chose to keep them together as they are **tightly coupled** and don't require dedicated style folders. They share functionality and are closely related, making this structure more convenient for now.
 
