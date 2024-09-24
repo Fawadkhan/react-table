@@ -8,7 +8,7 @@ export const TableBody: React.FC<{
     types: Record<string, TableCellType>;
   }> = ({ columns, rows, types }) => (
     <tbody>
-      {rows ? rows.map((row, index) => (
+      {rows.length ? rows.map((row, index) => (
         <tr key={index} data-testid={`row-${index}`} role="row">
           {columns.map(({ id }) => (
 
@@ -17,11 +17,15 @@ export const TableBody: React.FC<{
               className={classNames[`cell-type-${types[id]}`]}
               key={id}
             >
-              {row[id]}
+              {row[id] === undefined ? '-' : row[id]}
             </td>
           ))}
         </tr>
-      )) : 'No data' }
+      )) :  <tr>
+        <td>
+          <span className={classNames[`no-data`]}>No data found! Please filter again</span>
+        </td>
+      </tr> }
     </tbody>
   );
   

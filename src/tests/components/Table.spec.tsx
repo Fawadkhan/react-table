@@ -85,38 +85,40 @@ describe("Table", () => {
 
         });
 
+        it("should be possible to combine filters", () => {
+          render(
+            <Table
+              columns={mockColumns}
+              rows={mockRows}
+              types={mockTypes}
+              initialSortColumn=""
+              initialSortDirection={SORT_DIRECTION.Ascending}
+            />
+          );
+          const filterInput1 = screen.getByPlaceholderText(
+            `Filter ${mockColumns[0].id}`
+          );
+          const filterInput2 = screen.getByPlaceholderText(
+            `Filter ${mockColumns[1].id}`
+          );
+    
+          fireEvent.change(filterInput1, { target: { value: '3' } });
+          fireEvent.change(filterInput2, { target: { value: "Iron" } });
+    
+          expect(filterInput1).toHaveValue('3');
+          expect(filterInput2).toHaveValue("Iron");
+    
+          const rows = screen.getAllByRole("row");
+          const filteredRows = rows.filter(
+            (row) =>
+              row.textContent?.includes("3") && row.textContent?.includes("Iron")
+          );
+          expect(filteredRows.length).toBeGreaterThan(0);
+        });
+
       });
 
-    it("should be possible to combine filters", () => {
-      render(
-        <Table
-          columns={mockColumns}
-          rows={mockRows}
-          types={mockTypes}
-          initialSortColumn=""
-          initialSortDirection={SORT_DIRECTION.Ascending}
-        />
-      );
-      const filterInput1 = screen.getByPlaceholderText(
-        `Filter ${mockColumns[0].id}`
-      );
-      const filterInput2 = screen.getByPlaceholderText(
-        `Filter ${mockColumns[1].id}`
-      );
-
-      fireEvent.change(filterInput1, { target: { value: '3' } });
-      fireEvent.change(filterInput2, { target: { value: "Iron" } });
-
-      expect(filterInput1).toHaveValue('3');
-      expect(filterInput2).toHaveValue("Iron");
-
-      const rows = screen.getAllByRole("row");
-      const filteredRows = rows.filter(
-        (row) =>
-          row.textContent?.includes("3") && row.textContent?.includes("Iron")
-      );
-      expect(filteredRows.length).toBeGreaterThan(0);
-    });
+   
 
   });
 });

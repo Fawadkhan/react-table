@@ -7,8 +7,10 @@
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
+    "dompurify": "^3.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-error-boundary": "^4.0.13",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
@@ -22,7 +24,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "yarn eslint src",
-     "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "browserslist": {
     "production": [
