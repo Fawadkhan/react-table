@@ -17,7 +17,6 @@ export const TableBody: React.FC<{
               className={classNames[`cell-type-${types[id]}`]}
               key={id}
             >
-              {/* In some cases the production budget */}
               {row[id] === undefined ? '-' : row[id]}
             </td>
           ))}
